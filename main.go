@@ -31,7 +31,14 @@ func GetPeopleEndpoint(w http.ResponseWriter, req *http.Request) {
 
 // GetPersonEndpoint : Get some user by id in local list
 func GetPersonEndpoint(w http.ResponseWriter, req *http.Request) {
-
+	params := mux.Vars(req)
+	for _, item := range people {
+		if item.ID == params["id"] {
+			json.NewEncoder(w).Encode(item)
+			return
+		}
+	}
+	json.NewEncoder(w).Encode(&Person{})
 }
 
 // CreatePersonEndpoint : Insert user in local list
