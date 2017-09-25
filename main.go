@@ -23,11 +23,11 @@ type Address struct {
 var people []Person
 
 func GetPeopleEndpoint(w http.ResponseWriter, req *http.Request) {
-
+	json.NewEncoder(w).Encode(people)
 }
 
 func GetPersonEndpoint(w http.ResponseWriter, req *http.Request) {
-	json.NewEncoder(w).Encode(people)
+
 }
 
 func CreatePersonEndpoint(w http.ResponseWriter, req *http.Request) {
@@ -45,8 +45,7 @@ func main() {
 		Person{
 			ID:        "1",
 			Firstname: "Gandalf",
-			Lastname:  "The Gray",
-			Address:   &Address{City: "Middle", State: "Earth"}})
+			Lastname:  "The Gray"})
 
 	people = append(people,
 		Person{
