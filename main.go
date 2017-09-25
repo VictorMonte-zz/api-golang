@@ -68,8 +68,8 @@ func main() {
 			Address:   &Address{City: "Gothan", State: "NYC"}})
 
 	router.HandleFunc("/people", GetPeopleEndpoint).Methods("GET")
-	router.HandleFunc("/people/{id}", GetPersonEndpoint).Methods("GET")
-	router.HandleFunc("/people/{id}", CreatePersonEndpoint).Methods("POST")
-	router.HandleFunc("/people/{id}", DeletePersonEndpoint).Methods("DELETE")
+	router.HandleFunc("/person/{id}", GetPersonEndpoint).Methods("GET")
+	router.HandleFunc("/person/{id}", CreatePersonEndpoint).Methods("POST")
+	router.HandleFunc("/person/{id}", DeletePersonEndpoint).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
