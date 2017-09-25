@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 
@@ -26,7 +27,7 @@ func GetPeopleEndpoint(w http.ResponseWriter, req *http.Request) {
 }
 
 func GetPersonEndpoint(w http.ResponseWriter, req *http.Request) {
-
+	json.NewEncoder(w).Encode(people)
 }
 
 func CreatePersonEndpoint(w http.ResponseWriter, req *http.Request) {
