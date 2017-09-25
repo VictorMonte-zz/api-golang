@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Person : struct that represents the users
 type Person struct {
 	ID        string   `json:"id,omitempty"`
 	Firstname string   `json:"firstname,omitempty"`
@@ -15,6 +16,7 @@ type Person struct {
 	Address   *Address `json:"address,omitempty"`
 }
 
+// Address : struct that represents some location
 type Address struct {
 	City  string `json:"firstname,omitempty"`
 	State string `json:"state,omitempty"`
@@ -22,18 +24,22 @@ type Address struct {
 
 var people []Person
 
+// GetPeopleEndpoint : Get all users in local list
 func GetPeopleEndpoint(w http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(w).Encode(people)
 }
 
+// GetPersonEndpoint : Get some user by id in local list
 func GetPersonEndpoint(w http.ResponseWriter, req *http.Request) {
 
 }
 
+// CreatePersonEndpoint : Insert user in local list
 func CreatePersonEndpoint(w http.ResponseWriter, req *http.Request) {
 
 }
 
+// DeletePersonEndpoint : Remove some user in local list
 func DeletePersonEndpoint(w http.ResponseWriter, req *http.Request) {
 
 }
