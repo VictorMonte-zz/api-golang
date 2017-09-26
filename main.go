@@ -43,7 +43,12 @@ func GetPersonEndpoint(w http.ResponseWriter, req *http.Request) {
 
 // CreatePersonEndpoint : Insert user in local list
 func CreatePersonEndpoint(w http.ResponseWriter, req *http.Request) {
-
+	params := mux.Vars(req)
+	var person Person
+	_ = json.NewDecoder(req.Body).Decode(&person)
+	person.ID = params["id"]
+	people = append(people, person)
+	json.NewEncoder(w).Encode(people)
 }
 
 // DeletePersonEndpoint : Remove some user in local list
